@@ -20,7 +20,7 @@ public class MyServlet extends HttpServlet {
     Connection conn=null;
     
     public MyServlet(){
-        conn=MYSQL_CONNECT.ConnectDB();
+        conn=SQLITE_CONNECT.ConnectDB();
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
