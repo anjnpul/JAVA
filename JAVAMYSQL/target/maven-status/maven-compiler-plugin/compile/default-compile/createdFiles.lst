@@ -1,0 +1,5 @@
+Login.class
+MYSQL_CONNECT.class
+Welcome.class
+com\mycompany\javamysql\resources\JavaEE8Resource.class
+com\mycompany\javamysql\JAXRSConfiguration.class
