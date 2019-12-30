@@ -19,9 +19,7 @@ public class data {
     private String PARTYTP;
     private String AMT;
     private String REM;
-
-    
-    
+    private String PROJ;
 
     public int getID() {
         return ID;
@@ -94,6 +92,14 @@ public class data {
     public void setREM(String REM) {
         this.REM = REM;
     }
-    
+
+    public String getPROJ() {
+        return PROJ;
+    }
+
+    public void setPROJ(String PROJ) {
+        this.PROJ = PROJ;
+    }
+
     
 }

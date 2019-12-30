@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Bootstrap Template</title>
+        <title>ANJAN</title>
         <!-- Bootstrap -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <!-- Optional Bootstrap Theme -->
@@ -19,41 +19,65 @@
         <![endif]-->
     </head>
     <body>
-        <div class="container">
-            <form action="SaveData" method="post">
-                <table class="table table-bordered table-hover">
-                    <tr>
-                        <td>REF. NO:</td>
-                        <td><input type="text" class="form-control" name="REF" /></td>
-                        <td>DATE:</td>
-                        <td><input type="date" class="form-control" name="DATE" /></td>
-                    </tr>
-
-                    <tr>
-                        <td>ACCOUNT:</td>
-                        <td><input type="text" class="form-control" name="ACC" /></td>
-                        <td>ACCOUNT TYPE:</td>
-                        <td><input type="text" class="form-control" name="ACCTP" /></td>
-                    </tr>
-                    <tr>
-                        <td>PAID TO / FOR:</td>
-                        <td><input type="text" class="form-control" name="PARTY" /></td>
-                        <td>PAYMENT TYPE:</td>
-                        <td><input type="text" class="form-control" name="PARTYTP" /></td>
-                    </tr>
-                    <tr>
-                        <td>AMOUNT:</td>
-                        <td><input type="number" step="any" class="form-control" name="AMT" /></td>
-                        <td>REMARKS:</td>
-                        <td><input type="text" class="form-control" name="REM" /></td>
-                    </tr>
-                    <tr><td colspan="4"><input type="submit" class="btn btn-success" id="btnPMT" value="Save" /></td></tr>
-                </table>
-            </form>
+        <div class="container body-content">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>REF. NO:</td>
+                    <td><input type="text" class="form-control" name="REF" id="REF" /></td>
+                    <td>DATE:</td>
+                    <td><input type="text" class="form-control" name="DATE" id="DATE"/></td>
+                </tr>
+                <tr><td>PROJECT:</td><td><input type="text" name="PROJ" id="PROJ" class="form-control"/></td><td><input type="hidden" id="ACT" name="ACT"/></td></tr>
+                <tr>
+                    <td>ACCOUNT:</td>
+                    <td><input type="text" class="form-control" name="ACC" id="ACC" /></td>
+                    <td>ACCOUNT TYPE:</td>
+                    <td><input type="text" class="form-control" name="ACCTP" id="ACCTP" /></td>
+                </tr>
+                <tr>
+                    <td>PAID TO / FOR:</td>
+                    <td><input type="text" class="form-control" name="PARTY" id="PARTY" /></td>
+                    <td>PAYMENT TYPE:</td>
+                    <td><input type="text" class="form-control" name="PARTYTP" id="PARTYTP" /></td>
+                </tr>
+                <tr>
+                    <td>AMOUNT:</td>
+                    <td><input type="number" step="any" class="form-control" name="AMT" id="AMT" /></td>
+                    <td>REMARKS:</td>
+                    <td><input type="text" class="form-control" name="REM" id="REM" /></td>
+                </tr>
+                <tr><td colspan="4"><input type="button" class="btn btn-success" id="btnPMT" name="add" value="Save" /></td></tr>
+            </table>
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#ACT").val("ADD");
+                $("#btnPMT").click(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "SaveData", 
+                        data: {  
+                            REF: $("#REF").val(),   
+                            DATE: $("#DATE").val(),
+                            ACC: $("#ACC").val(),
+                            ACCTP: $("#ACCTP").val(),
+                            PARTY: $("#PARTY").val(),
+                            PARTYTP: $("#PARTYTP").val(),
+                            AMT: $("#AMT").val(),
+                            REM: $("#REM").val(),
+                            PROJ: $("#PROJ").val()
+                        },
+			success : function(responseText) {
+				alert(responseText);
+			}
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

@@ -34,6 +34,7 @@ public class SaveData extends HttpServlet {
         String PARTYTP = req.getParameter("PARTYTP");
         String AMT = req.getParameter("AMT");
         String REM = req.getParameter("REM");
+        String PROJ = req.getParameter("PROJ");
         
         data e = new data();
         e.setREF(REF);
@@ -44,16 +45,15 @@ public class SaveData extends HttpServlet {
         e.setPARTYTP(PARTYTP);
         e.setAMT(AMT);
         e.setREM(REM);
-        out.println(REF);
-        out.println(DATE);
-        out.println(ACC);
-        out.println(ACCTP);
-        out.println(PARTY);
-        out.println(PARTYTP);
-        out.println(AMT);
-        out.println(REM);
-          
-        out.close();
+        e.setPROJ(PROJ);
+        int status=DataAccess.save(e);
+        String msg = "ANJAN";
+        if(status>0){  
+            msg = "Data Saved Successfully";  
+        }else{  
+            msg = "Error in Data Saving";  
+        }   
+        resp.getWriter().write(msg);
     }
 
 }
